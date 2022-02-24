@@ -20,10 +20,18 @@ class LoginViewController: UIViewController {
         // Do any additional setup after loading the view.
     }
     
+    override func viewDidAppear(_ animated: Bool) {
+        let isUserLoggedIn = UserDefaults.standard.bool(forKey: "isUserLoggedIn")
+        if isUserLoggedIn {
+            self.performSegue(withIdentifier: "loginToHome", sender: self)  // Checks if the user is logged in. If they are, present the Home view
+        }
+    }
+    
     @IBAction func onLoginButton(_ sender: Any) {
         let authURL = "https://api.twitter.com/oauth/request_token" // The POST path for Twitter API User Auth
         
         TwitterAPICaller.client?.login(url: authURL, success: {
+            UserDefaults.standard.set(true, forKey: "isUserLoggedIn") // Store this boolean value if the user logs in
             self.performSegue(withIdentifier: "loginToHome", sender: self)  // On Success, perform the segue we established between the LoginVC and the Nav Controller.
         }, failure: { Error in
             print("Login failed.") // On Failure, print this to the console.

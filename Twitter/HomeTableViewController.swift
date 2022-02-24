@@ -21,8 +21,9 @@ class HomeTableViewController: UITableViewController {
     }
     
     @IBAction func onLogout(_ sender: Any) {
-        TwitterAPICaller.client?.logout()
-        self.dismiss(animated: true, completion: nil)
+        UserDefaults.standard.set(false, forKey: "isUserLoggedIn") // Store this boolean value if the user logs out
+        TwitterAPICaller.client?.logout()   // When the logout button is clicked, call the logout() function to log a user out
+        self.dismiss(animated: true, completion: nil)   // Dismiss the modal view after loggin out
     }
     
     // MARK: - Table view data source
