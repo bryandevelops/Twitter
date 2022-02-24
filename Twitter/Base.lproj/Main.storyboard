@@ -64,10 +64,10 @@
             </objects>
             <point key="canvasLocation" x="184.05797101449278" y="90.401785714285708"/>
         </scene>
-        <!--Root View Controller-->
+        <!--Home-->
         <scene sceneID="dsj-XI-f4O">
             <objects>
-                <tableViewController id="Lg1-UG-sOl" sceneMemberID="viewController">
+                <tableViewController id="Lg1-UG-sOl" customClass="HomeTableViewController" customModule="Twitter" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="-1" estimatedSectionHeaderHeight="-1" sectionFooterHeight="-1" estimatedSectionFooterHeight="-1" id="B3O-hW-Mgq">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -87,7 +87,13 @@
                             <outlet property="delegate" destination="Lg1-UG-sOl" id="eLj-DH-j94"/>
                         </connections>
                     </tableView>
-                    <navigationItem key="navigationItem" title="Root View Controller" id="CbB-xz-OGn"/>
+                    <navigationItem key="navigationItem" title="Home" id="CbB-xz-OGn">
+                        <barButtonItem key="leftBarButtonItem" title="Logout" id="pGl-tf-SlX">
+                            <connections>
+                                <action selector="onLogout:" destination="Lg1-UG-sOl" id="B7j-nD-eXV"/>
+                            </connections>
+                        </barButtonItem>
+                    </navigationItem>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="557-Ov-JZv" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>
@@ -101,6 +107,8 @@
                     <navigationBar key="navigationBar" contentMode="scaleToFill" id="0f1-xv-B4g">
                         <rect key="frame" x="0.0" y="0.0" width="414" height="56"/>
                         <autoresizingMask key="autoresizingMask"/>
+                        <navigationBarAppearance key="standardAppearance"/>
+                        <navigationBarAppearance key="scrollEdgeAppearance"/>
                     </navigationBar>
                     <connections>
                         <segue destination="Lg1-UG-sOl" kind="relationship" relationship="rootViewController" id="TOX-Iz-HBt"/>
