@@ -9,15 +9,39 @@
 import UIKit
 
 class HomeTableViewController: UITableViewController {
+    
+    var tweetsArray = [NSDictionary]()
+    var numOfTweets: Int!
+    let homeRefreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        getTweets()
+        homeRefreshControl.addTarget(self, action: #selector(getTweets), for: .valueChanged) // Fetch more tweets for table view when refreshing
+        tableView.refreshControl = homeRefreshControl
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
 
         // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
         // self.navigationItem.rightBarButtonItem = self.editButtonItem
+    }
+    
+    @objc func getTweets() {
+        let endPointURL = "https://api.twitter.com/1.1/statuses/home_timeline.json" // Endpoint URL
+        let endPointParams = ["count": 10] // Additional params to be attached to the request
+
+        TwitterAPICaller.client?.getDictionariesRequest(url: endPointURL, parameters: endPointParams, success: { (tweets: [NSDictionary]) in
+            self.tweetsArray.removeAll() // Remove everything stored before storing new tweets
+            for tweet in tweets {
+                self.tweetsArray.append(tweet) // Append every tweet returned to us from our request
+            }
+            self.tableView.reloadData() // Reload table view after fetching tweets
+            self.homeRefreshControl.endRefreshing() // Stop refreshing after fetching tweets
+        }, failure: { Error in
+            print("Could not retrieve tweets.")
+            print(Error.localizedDescription)
+        })
     }
     
     @IBAction func onLogout(_ sender: Any) {
@@ -30,23 +54,27 @@ class HomeTableViewController: UITableViewController {
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
-        return 0
+        return 1
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return 0
+        return tweetsArray.count
     }
 
-    /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "reuseIdentifier", for: indexPath)
-
-        // Configure the cell...
+        let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetsTableViewCell
+        let user = tweetsArray[indexPath.row]["user"] as! NSDictionary
+        let profilePictureURL = user["profile_image_url_https"]
+        
+        cell.profilePicture.setImageWith(URL(string: profilePictureURL as! String)!)
+        cell.profilePicture.layer.cornerRadius = 25
+        cell.displayName.text = (user["name"] as! String)
+        cell.userName.text = "@\(user["screen_name"] ?? "")"
+        cell.tweetContent.text = (tweetsArray[indexPath.row]["text"] as! String)
 
         return cell
     }
-    */
 
     /*
     // Override to support conditional editing of the table view.
