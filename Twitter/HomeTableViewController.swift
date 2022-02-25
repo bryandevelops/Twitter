@@ -11,7 +11,7 @@ import UIKit
 class HomeTableViewController: UITableViewController {
     
     var tweetsArray = [NSDictionary]()
-    var numOfTweets: Int!
+    var numOfTweets = 20
     let homeRefreshControl = UIRefreshControl()
 
     override func viewDidLoad() {
@@ -28,8 +28,9 @@ class HomeTableViewController: UITableViewController {
     }
     
     @objc func getTweets() {
+        numOfTweets = 20
         let endPointURL = "https://api.twitter.com/1.1/statuses/home_timeline.json" // Endpoint URL
-        let endPointParams = ["count": 10] // Additional params to be attached to the request
+        let endPointParams = ["count": numOfTweets] // Additional params to be attached to the request
 
         TwitterAPICaller.client?.getDictionariesRequest(url: endPointURL, parameters: endPointParams, success: { (tweets: [NSDictionary]) in
             self.tweetsArray.removeAll() // Remove everything stored before storing new tweets
@@ -38,6 +39,23 @@ class HomeTableViewController: UITableViewController {
             }
             self.tableView.reloadData() // Reload table view after fetching tweets
             self.homeRefreshControl.endRefreshing() // Stop refreshing after fetching tweets
+        }, failure: { Error in
+            print("Could not retrieve tweets.")
+            print(Error.localizedDescription)
+        })
+    }
+    
+    func getMoreTweets() {
+        numOfTweets += 20
+        let endPointURL = "https://api.twitter.com/1.1/statuses/home_timeline.json"
+        let endPointParams = ["count": numOfTweets]
+        
+        TwitterAPICaller.client?.getDictionariesRequest(url: endPointURL, parameters: endPointParams, success: { (tweets: [NSDictionary]) in
+            self.tweetsArray.removeAll() // Remove everything stored before storing new tweets
+            for tweet in tweets {
+                self.tweetsArray.append(tweet) // Append every tweet returned to us from our request
+            }
+            self.tableView.reloadData() // Reload table view after fetching tweets
         }, failure: { Error in
             print("Could not retrieve tweets.")
             print(Error.localizedDescription)
@@ -74,6 +92,12 @@ class HomeTableViewController: UITableViewController {
         cell.tweetContent.text = (tweetsArray[indexPath.row]["text"] as! String)
 
         return cell
+    }
+    
+    override func tableView(_ tableView: UITableView, willDisplay cell: UITableViewCell, forRowAt indexPath: IndexPath) {
+        if indexPath.row + 1 == tweetsArray.count {
+            getMoreTweets()
+        }
     }
 
     /*
