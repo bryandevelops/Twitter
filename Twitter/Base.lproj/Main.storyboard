@@ -167,18 +167,28 @@
                         <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" fixedFrame="YES" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g3F-OQ-uBU">
-                                <rect key="frame" x="20" y="88" width="374" height="128"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" textAlignment="natural" translatesAutoresizingMaskIntoConstraints="NO" id="g3F-OQ-uBU">
+                                <rect key="frame" x="20" y="100" width="374" height="128"/>
                                 <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="128" id="6eA-YC-bLp"/>
+                                </constraints>
                                 <string key="text">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis irure in reprehenderits.</string>
                                 <color key="textColor" systemColor="labelColor"/>
                                 <fontDescription key="fontDescription" type="system" pointSize="15"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                <connections>
+                                    <outlet property="delegate" destination="nIb-jV-aFo" id="0Hb-hp-i31"/>
+                                </connections>
                             </textView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pvB-hV-EoR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
+                        <constraints>
+                            <constraint firstItem="g3F-OQ-uBU" firstAttribute="top" secondItem="pvB-hV-EoR" secondAttribute="top" constant="12" id="Bru-rj-U6W"/>
+                            <constraint firstItem="g3F-OQ-uBU" firstAttribute="leading" secondItem="pvB-hV-EoR" secondAttribute="leading" constant="20" id="K2R-13-5bK"/>
+                            <constraint firstItem="pvB-hV-EoR" firstAttribute="trailing" secondItem="g3F-OQ-uBU" secondAttribute="trailing" constant="20" id="jod-mk-HoK"/>
+                        </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Kwf-u2-lum">
                         <barButtonItem key="leftBarButtonItem" title="Cancel" id="oUc-Lf-jR7">
@@ -193,7 +203,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
-                        <outlet property="tweetTextView" destination="g3F-OQ-uBU" id="0F8-im-90b"/>
+                        <outlet property="textView" destination="g3F-OQ-uBU" id="aV0-MW-q7m"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="c0F-aS-Ls5" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
