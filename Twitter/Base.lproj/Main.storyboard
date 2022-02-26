@@ -181,9 +181,11 @@
                                     <outlet property="delegate" destination="nIb-jV-aFo" id="0Hb-hp-i31"/>
                                 </connections>
                             </textView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 / 280" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDN-WW-akI">
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0 / 280" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDN-WW-akI">
                                 <rect key="frame" x="20" y="236" width="374" height="18"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="18" id="xbb-zH-jNs"/>
+                                </constraints>
                                 <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
@@ -194,7 +196,10 @@
                         <constraints>
                             <constraint firstItem="g3F-OQ-uBU" firstAttribute="top" secondItem="pvB-hV-EoR" secondAttribute="top" constant="12" id="Bru-rj-U6W"/>
                             <constraint firstItem="g3F-OQ-uBU" firstAttribute="leading" secondItem="pvB-hV-EoR" secondAttribute="leading" constant="20" id="K2R-13-5bK"/>
+                            <constraint firstItem="tDN-WW-akI" firstAttribute="leading" secondItem="pvB-hV-EoR" secondAttribute="leading" constant="20" id="Yrg-ee-bYh"/>
+                            <constraint firstItem="tDN-WW-akI" firstAttribute="top" secondItem="g3F-OQ-uBU" secondAttribute="bottom" constant="8" symbolic="YES" id="eOm-Z1-vyp"/>
                             <constraint firstItem="pvB-hV-EoR" firstAttribute="trailing" secondItem="g3F-OQ-uBU" secondAttribute="trailing" constant="20" id="jod-mk-HoK"/>
+                            <constraint firstItem="pvB-hV-EoR" firstAttribute="trailing" secondItem="tDN-WW-akI" secondAttribute="trailing" constant="20" id="sYL-Cp-vfW"/>
                         </constraints>
                     </view>
                     <navigationItem key="navigationItem" id="Kwf-u2-lum">
