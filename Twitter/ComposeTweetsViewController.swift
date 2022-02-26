@@ -11,6 +11,7 @@ import UIKit
 class ComposeTweetsViewController: UIViewController, UITextViewDelegate {
 
     @IBOutlet weak var textView: UITextView!
+    @IBOutlet weak var countLabelView: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -28,7 +29,11 @@ class ComposeTweetsViewController: UIViewController, UITextViewDelegate {
     }
     // Show the placeholder text whenever the text view is empty, even if the text view’s selected
     func textView(_ textView: UITextView, shouldChangeTextIn range: NSRange, replacementText text: String) -> Bool {
-
+        
+        let strLength = textView.text.count
+        let lngthToAdd = text.count
+        let lengthCount = strLength + lngthToAdd
+        
         // Combine the textView text and the replacement text to
         // create the updated text string
         let currentText:String = textView.text
@@ -42,6 +47,10 @@ class ComposeTweetsViewController: UIViewController, UITextViewDelegate {
             textView.textColor = UIColor.lightGray
 
             textView.selectedTextRange = textView.textRange(from: textView.beginningOfDocument, to: textView.beginningOfDocument)
+            
+            if (textView.textColor == UIColor.lightGray) {
+                self.countLabelView.text = "\(0) / 280"
+            }
         }
 
         // Else if the text view's placeholder is showing and the
@@ -51,17 +60,30 @@ class ComposeTweetsViewController: UIViewController, UITextViewDelegate {
          else if textView.textColor == UIColor.lightGray && !text.isEmpty {
             textView.textColor = UIColor.black
             textView.text = text
+             
+            self.countLabelView.text = "\(1) / 280"
         }
 
         // For every other case, the text should change with the usual
         // behavior...
         else {
+            if (textView.textColor == UIColor.lightGray) {
+                self.countLabelView.text = "\(0) / 280"
+            } else {
+                self.countLabelView.text = "\(lengthCount) / 280"
+            }
+            
+            if lengthCount > 280 {
+                self.countLabelView.textColor = UIColor.red
+            } else {
+                self.countLabelView.textColor = UIColor.black
+            }
             return true
         }
 
         // ...otherwise return false since the updates have already
         // been made
-        return false
+           return false
     }
 
     // Prevent the user from changing the position of the cursor while the placeholder's visible
@@ -72,7 +94,6 @@ class ComposeTweetsViewController: UIViewController, UITextViewDelegate {
             }
         }
     }
-
     
     @IBAction func onCancel(_ sender: Any) {
         self.dismiss(animated: true, completion: nil)
@@ -80,18 +101,22 @@ class ComposeTweetsViewController: UIViewController, UITextViewDelegate {
     
     @IBAction func onTweet(_ sender: Any) {
         // Create an alert that will be used if the tweet is empty and can't be posted
-        let alertController = UIAlertController(title: "Alert", message: "Your tweet is empty.", preferredStyle: .alert)
+        let emptyAlert = UIAlertController(title: "Alert", message: "Your tweet is empty.", preferredStyle: .alert)
+        let tooLongAlert = UIAlertController(title: "Alert", message: "Your tweet is too long.", preferredStyle: .alert)
         let OKAction = UIAlertAction(title: "OK", style: .default)
-        alertController.addAction(OKAction)
         
-        if (!textView.text.isEmpty) {
+        if (!textView.text.isEmpty && textView.text.count <= 280) {
             TwitterAPICaller.client?.postTweet(tweetString: textView.text, success: {
                 self.dismiss(animated: true, completion: nil)
             }, failure: { Error in
                 print("Could not post tweet.")
                 print(Error.localizedDescription)
-                self.present(alertController, animated: true, completion: nil) // Call the alert
+                emptyAlert.addAction(OKAction)
+                self.present(emptyAlert, animated: true, completion: nil) // Call the alert
             })
+        } else {
+            tooLongAlert.addAction(OKAction)
+            self.present(tooLongAlert, animated: true, completion: nil)
         }
     }
     

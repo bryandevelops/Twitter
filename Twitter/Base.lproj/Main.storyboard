@@ -181,6 +181,13 @@
                                     <outlet property="delegate" destination="nIb-jV-aFo" id="0Hb-hp-i31"/>
                                 </connections>
                             </textView>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="0 / 280" textAlignment="right" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="tDN-WW-akI">
+                                <rect key="frame" x="20" y="236" width="374" height="18"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" weight="light" pointSize="13"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="pvB-hV-EoR"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
@@ -203,6 +210,7 @@
                         </barButtonItem>
                     </navigationItem>
                     <connections>
+                        <outlet property="countLabelView" destination="tDN-WW-akI" id="w8K-IB-VcW"/>
                         <outlet property="textView" destination="g3F-OQ-uBU" id="aV0-MW-q7m"/>
                     </connections>
                 </viewController>
