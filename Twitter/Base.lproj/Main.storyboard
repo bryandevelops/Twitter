@@ -106,7 +106,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tweet" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="pyd-Pq-8d3">
-                                            <rect key="frame" x="80" y="34" width="314" height="34"/>
+                                            <rect key="frame" x="80" y="34" width="314" height="29"/>
                                             <constraints>
                                                 <constraint firstAttribute="width" constant="314" id="Baj-M1-tKZ"/>
                                             </constraints>
@@ -115,7 +115,7 @@
                                             <nil key="highlightedColor"/>
                                         </label>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="4dt-dJ-bK6" userLabel="Favorite Button">
-                                            <rect key="frame" x="364" y="72" width="30" height="30"/>
+                                            <rect key="frame" x="352.66666666666669" y="72" width="30" height="30"/>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="3"/>
                                             <state key="normal" image="favor-icon"/>
                                             <connections>
@@ -123,41 +123,65 @@
                                             </connections>
                                         </button>
                                         <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Oq3-sk-6Xu" userLabel="Retweet Button">
-                                            <rect key="frame" x="301" y="72" width="30" height="30"/>
+                                            <rect key="frame" x="309.33333333333331" y="72" width="30" height="30"/>
                                             <constraints>
                                                 <constraint firstAttribute="height" constant="30" id="pa1-1w-Kyw"/>
                                                 <constraint firstAttribute="width" constant="30" id="rm3-Au-GXC"/>
                                             </constraints>
                                             <inset key="imageEdgeInsets" minX="0.0" minY="0.0" maxX="2.2250738585072014e-308" maxY="0.0"/>
-                                            <state key="normal" image="retweet-icon"/>
+                                            <state key="normal" image="retweet-icon">
+                                                <color key="titleColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                            </state>
                                             <connections>
                                                 <action selector="onRetweet:" destination="ZfC-Ds-sgm" eventType="touchUpInside" id="Y39-5Q-mzD"/>
                                             </connections>
                                         </button>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="n9u-6L-7LT" userLabel="Favorite Label">
+                                            <rect key="frame" x="383.66666666666669" y="78" width="9.3333333333333144" height="18"/>
+                                            <constraints>
+                                                <constraint firstAttribute="width" relation="lessThanOrEqual" constant="373" id="IrD-xV-yH5"/>
+                                            </constraints>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Qct-gR-fII" userLabel="Retweet Label">
+                                            <rect key="frame" x="340.33333333333331" y="78" width="9.3333333333333144" height="18"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                                            <nil key="textColor"/>
+                                            <nil key="highlightedColor"/>
+                                        </label>
                                     </subviews>
                                     <constraints>
                                         <constraint firstAttribute="trailing" secondItem="pyd-Pq-8d3" secondAttribute="trailing" constant="20" symbolic="YES" id="GSp-V9-9Al"/>
                                         <constraint firstItem="Oq3-sk-6Xu" firstAttribute="bottom" secondItem="3c0-8n-1Zd" secondAttribute="bottomMargin" constant="6" id="Lqc-PU-JsY"/>
                                         <constraint firstItem="QNH-jz-JwD" firstAttribute="leading" secondItem="7kG-ZZ-b5L" secondAttribute="trailing" constant="8" symbolic="YES" id="Mgo-ao-u2c"/>
                                         <constraint firstItem="7kG-ZZ-b5L" firstAttribute="leading" secondItem="3c0-8n-1Zd" secondAttribute="leading" constant="20" symbolic="YES" id="Q56-uj-ui7"/>
-                                        <constraint firstItem="4dt-dJ-bK6" firstAttribute="top" secondItem="pyd-Pq-8d3" secondAttribute="bottom" constant="4" id="W4l-Qr-m7b"/>
-                                        <constraint firstItem="Oq3-sk-6Xu" firstAttribute="top" secondItem="pyd-Pq-8d3" secondAttribute="bottom" constant="4" id="ZAB-yZ-3RV"/>
+                                        <constraint firstItem="n9u-6L-7LT" firstAttribute="centerY" secondItem="Oq3-sk-6Xu" secondAttribute="centerY" id="RqD-BB-d60"/>
+                                        <constraint firstItem="n9u-6L-7LT" firstAttribute="leading" secondItem="4dt-dJ-bK6" secondAttribute="trailing" constant="1" id="UqD-ed-Ipa"/>
+                                        <constraint firstItem="4dt-dJ-bK6" firstAttribute="top" secondItem="pyd-Pq-8d3" secondAttribute="bottom" constant="9" id="W4l-Qr-m7b"/>
+                                        <constraint firstItem="Oq3-sk-6Xu" firstAttribute="top" secondItem="pyd-Pq-8d3" secondAttribute="bottom" constant="9" id="ZAB-yZ-3RV"/>
+                                        <constraint firstAttribute="trailingMargin" secondItem="n9u-6L-7LT" secondAttribute="trailing" constant="1" id="ajR-fa-Hoc"/>
                                         <constraint firstItem="pyd-Pq-8d3" firstAttribute="top" secondItem="QNH-jz-JwD" secondAttribute="bottom" constant="4" id="cp4-2F-xZV"/>
+                                        <constraint firstItem="Qct-gR-fII" firstAttribute="centerY" secondItem="Oq3-sk-6Xu" secondAttribute="centerY" id="cua-ne-F9b"/>
                                         <constraint firstItem="TTh-s1-fc7" firstAttribute="leading" secondItem="QNH-jz-JwD" secondAttribute="trailing" constant="4" id="dU6-9q-4qy"/>
+                                        <constraint firstItem="Qct-gR-fII" firstAttribute="leading" secondItem="Oq3-sk-6Xu" secondAttribute="trailing" constant="1" id="eER-kb-O5n"/>
                                         <constraint firstAttribute="bottomMargin" relation="greaterThanOrEqual" secondItem="7kG-ZZ-b5L" secondAttribute="bottom" constant="6" id="eia-0X-Sfb"/>
-                                        <constraint firstItem="4dt-dJ-bK6" firstAttribute="trailing" secondItem="pyd-Pq-8d3" secondAttribute="trailing" id="fVG-Ez-GMF"/>
                                         <constraint firstItem="7kG-ZZ-b5L" firstAttribute="top" secondItem="3c0-8n-1Zd" secondAttribute="top" constant="12" id="nkY-yu-s2E"/>
                                         <constraint firstItem="QNH-jz-JwD" firstAttribute="top" secondItem="3c0-8n-1Zd" secondAttribute="top" constant="12" id="phy-gw-wAB"/>
+                                        <constraint firstItem="4dt-dJ-bK6" firstAttribute="centerY" secondItem="Oq3-sk-6Xu" secondAttribute="centerY" id="sON-cm-RU4"/>
                                         <constraint firstItem="TTh-s1-fc7" firstAttribute="top" secondItem="3c0-8n-1Zd" secondAttribute="top" constant="12" id="smN-cS-2cH"/>
-                                        <constraint firstItem="4dt-dJ-bK6" firstAttribute="leading" secondItem="Oq3-sk-6Xu" secondAttribute="trailing" constant="33" id="unR-oS-WPp"/>
+                                        <constraint firstItem="4dt-dJ-bK6" firstAttribute="leading" secondItem="Qct-gR-fII" secondAttribute="trailing" constant="3" id="zMo-Xe-mgi"/>
                                         <constraint firstItem="pyd-Pq-8d3" firstAttribute="leading" secondItem="7kG-ZZ-b5L" secondAttribute="trailing" constant="8" symbolic="YES" id="znG-AF-Gq0"/>
                                     </constraints>
                                 </tableViewCellContentView>
                                 <connections>
                                     <outlet property="displayName" destination="QNH-jz-JwD" id="nmt-oV-qme"/>
                                     <outlet property="favoriteButton" destination="4dt-dJ-bK6" id="y3W-GQ-cOw"/>
+                                    <outlet property="favoriteLabel" destination="n9u-6L-7LT" id="53z-Lc-VEn"/>
                                     <outlet property="profilePicture" destination="7kG-ZZ-b5L" id="K1A-gJ-Phs"/>
                                     <outlet property="retweetButton" destination="Oq3-sk-6Xu" id="Pzj-yC-m9q"/>
+                                    <outlet property="retweetLabel" destination="Qct-gR-fII" id="Rdb-ao-YBU"/>
                                     <outlet property="tweetContent" destination="pyd-Pq-8d3" id="NBw-j6-005"/>
                                     <outlet property="userName" destination="TTh-s1-fc7" id="7Ba-mX-Zmf"/>
                                 </connections>

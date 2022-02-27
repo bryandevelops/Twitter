@@ -84,6 +84,8 @@ class HomeTableViewController: UITableViewController {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetsTableViewCell
         let user = tweetsArray[indexPath.row]["user"] as! NSDictionary
         let profilePictureURL = user["profile_image_url_https"]
+        let favoriteCount = tweetsArray[indexPath.row]["favorite_count"]
+        let retweetCount = tweetsArray[indexPath.row]["retweet_count"]
         
         cell.profilePicture.setImageWith(URL(string: profilePictureURL as! String)!)
         cell.profilePicture.layer.cornerRadius = 25
@@ -98,6 +100,9 @@ class HomeTableViewController: UITableViewController {
         cell.setRetweet(tweetsArray[indexPath.row]["retweeted"] as! Bool)
         
         cell.tweetID = tweetsArray[indexPath.row]["id"] as? Int
+        
+        cell.favoriteLabel.text = "\(favoriteCount ?? "")"
+        cell.retweetLabel.text = "\(retweetCount ?? "")"
 
         return cell
     }
