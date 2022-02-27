@@ -361,11 +361,19 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
+                            <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="twitter-logo-transparent" translatesAutoresizingMaskIntoConstraints="NO" id="iZ8-JQ-ddj">
+                                <rect key="frame" x="87" y="509" width="240" height="128"/>
+                                <constraints>
+                                    <constraint firstAttribute="width" constant="240" id="EOj-hO-U75"/>
+                                    <constraint firstAttribute="height" constant="128" id="wd0-OC-8Yc"/>
+                                </constraints>
+                            </imageView>
                         </subviews>
                         <viewLayoutGuide key="safeArea" id="qGn-Xj-aj7"/>
                         <color key="backgroundColor" systemColor="systemBackgroundColor"/>
                         <constraints>
                             <constraint firstItem="ft2-fG-Fs3" firstAttribute="leading" secondItem="qGn-Xj-aj7" secondAttribute="leading" constant="20" id="1s1-9i-PEm"/>
+                            <constraint firstItem="qGn-Xj-aj7" firstAttribute="bottom" secondItem="iZ8-JQ-ddj" secondAttribute="bottom" constant="176" id="3lG-1B-WId"/>
                             <constraint firstItem="KyX-26-kz4" firstAttribute="leading" secondItem="qGn-Xj-aj7" secondAttribute="leading" constant="13" id="5PZ-bq-b7a"/>
                             <constraint firstItem="Qa5-F4-3aL" firstAttribute="leading" secondItem="qGn-Xj-aj7" secondAttribute="leading" constant="20" id="FRs-81-yea"/>
                             <constraint firstItem="ece-dP-vhZ" firstAttribute="top" secondItem="BrZ-2P-4Zr" secondAttribute="bottom" constant="8" id="Mo3-Yy-oys"/>
@@ -374,7 +382,9 @@
                             <constraint firstItem="dzf-Xy-NWn" firstAttribute="top" secondItem="BrZ-2P-4Zr" secondAttribute="bottom" constant="8" id="TMB-yA-Wet"/>
                             <constraint firstItem="O4c-s8-pmq" firstAttribute="leading" secondItem="qGn-Xj-aj7" secondAttribute="leading" id="VkJ-u2-mid"/>
                             <constraint firstItem="RV3-xT-MXt" firstAttribute="leading" secondItem="FHL-y1-UC5" secondAttribute="trailing" constant="4" id="Vq4-gT-CZR"/>
+                            <constraint firstItem="qGn-Xj-aj7" firstAttribute="trailing" secondItem="iZ8-JQ-ddj" secondAttribute="trailing" constant="87" id="b9R-H8-2ii"/>
                             <constraint firstItem="BrZ-2P-4Zr" firstAttribute="top" secondItem="ft2-fG-Fs3" secondAttribute="bottom" constant="8" id="bcR-FS-GuE"/>
+                            <constraint firstItem="iZ8-JQ-ddj" firstAttribute="leading" secondItem="qGn-Xj-aj7" secondAttribute="leading" constant="87" id="byA-ri-wtG"/>
                             <constraint firstItem="BrZ-2P-4Zr" firstAttribute="leading" secondItem="qGn-Xj-aj7" secondAttribute="leading" constant="20" id="eVU-ej-Foc"/>
                             <constraint firstItem="RV3-xT-MXt" firstAttribute="top" secondItem="BrZ-2P-4Zr" secondAttribute="bottom" constant="8" id="g8P-Ei-O7B"/>
                             <constraint firstItem="p9j-Z6-IWq" firstAttribute="top" secondItem="KyX-26-kz4" secondAttribute="bottom" constant="4" id="gMl-pl-fyF"/>
@@ -476,6 +486,7 @@
         <image name="home-icon" width="30" height="30"/>
         <image name="profile-Icon" width="26" height="26"/>
         <image name="retweet-icon" width="30" height="30"/>
+        <image name="twitter-logo-transparent" width="2400" height="1950"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
