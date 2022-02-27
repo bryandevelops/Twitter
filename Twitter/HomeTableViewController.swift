@@ -18,6 +18,8 @@ class HomeTableViewController: UITableViewController {
         super.viewDidLoad()
         homeRefreshControl.addTarget(self, action: #selector(getTweets), for: .valueChanged) // Fetch more tweets for table view when refreshing
         tableView.refreshControl = homeRefreshControl
+        tableView.rowHeight = UITableView.automaticDimension
+        tableView.estimatedRowHeight = 107
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -85,9 +87,17 @@ class HomeTableViewController: UITableViewController {
         
         cell.profilePicture.setImageWith(URL(string: profilePictureURL as! String)!)
         cell.profilePicture.layer.cornerRadius = 25
+        
         cell.displayName.text = (user["name"] as! String)
+        
         cell.userName.text = "@\(user["screen_name"] ?? "")"
+        
         cell.tweetContent.text = (tweetsArray[indexPath.row]["text"] as! String)
+        
+        cell.setFavorite(tweetsArray[indexPath.row]["favorited"] as! Bool)
+        cell.setRetweet(tweetsArray[indexPath.row]["retweeted"] as! Bool)
+        
+        cell.tweetID = tweetsArray[indexPath.row]["id"] as? Int
 
         return cell
     }
