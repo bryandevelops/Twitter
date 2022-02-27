@@ -466,6 +466,7 @@
                 <tabBarController automaticallyAdjustsScrollViewInsets="NO" id="YUA-2c-hKC" sceneMemberID="viewController">
                     <toolbarItems/>
                     <tabBar key="tabBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="pkM-E2-4rZ">
+                        <rect key="frame" x="0.0" y="0.0" width="1000" height="1000"/>
                         <autoresizingMask key="autoresizingMask"/>
                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                     </tabBar>
@@ -486,7 +487,7 @@
         <image name="home-icon" width="30" height="30"/>
         <image name="profile-Icon" width="26" height="26"/>
         <image name="retweet-icon" width="30" height="30"/>
-        <image name="twitter-logo-transparent" width="2400" height="1950"/>
+        <image name="twitter-logo-transparent" width="800" height="650"/>
         <systemColor name="labelColor">
             <color white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
         </systemColor>
