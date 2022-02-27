@@ -10,6 +10,8 @@ import UIKit
 
 class HomeTableViewController: UITableViewController {
     
+    @IBOutlet var homeTableView: UITableView!
+    
     var tweetsArray = [NSDictionary]()
     var numOfTweets = 20
     let homeRefreshControl = UIRefreshControl()
@@ -83,11 +85,11 @@ class HomeTableViewController: UITableViewController {
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "tweetCell", for: indexPath) as! TweetsTableViewCell
         let user = tweetsArray[indexPath.row]["user"] as! NSDictionary
-        let profilePictureURL = user["profile_image_url_https"]
+        let profilePictureURL = user["profile_image_url_https"] as! String
         let favoriteCount = tweetsArray[indexPath.row]["favorite_count"]
         let retweetCount = tweetsArray[indexPath.row]["retweet_count"]
         
-        cell.profilePicture.setImageWith(URL(string: profilePictureURL as! String)!)
+        cell.profilePicture.setImageWith(URL(string: profilePictureURL.replacingOccurrences(of: "_normal", with: "") )!)
         cell.profilePicture.layer.cornerRadius = 25
         
         cell.displayName.text = (user["name"] as! String)
@@ -148,14 +150,18 @@ class HomeTableViewController: UITableViewController {
     }
     */
 
-    /*
+    
     // MARK: - Navigation
 
     // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using segue.destination.
-        // Pass the selected object to the new view controller.
-    }
-    */
+//    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+//        // Get the new view controller using segue.destination.
+//        // Pass the selected object to the new view controller.
+//
+//        let cell = sender as! UITableViewCell
+//        let indexPath = homeTableView.indexPath(for: cell)!
+//        let user = tweetsArray[indexPath.row]["user"] as! NSDictionary
+//    }
+    
 
 }
