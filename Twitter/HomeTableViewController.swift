@@ -105,7 +105,18 @@ class HomeTableViewController: UITableViewController {
         
         cell.favoriteLabel.text = "\(favoriteCount ?? "")"
         cell.retweetLabel.text = "\(retweetCount ?? "")"
-
+        
+        // EMBED IMAGES FEATURE
+        let entities = tweetsArray[indexPath.row]["entities"] as! NSDictionary
+        
+        
+        if let medias = entities["media"] as? [NSDictionary] {
+            for media in medias {
+                cell.mediaImage.setImageWith(URL(string: media["media_url_https"] as! String)!)
+            }
+        }
+        //
+        
         return cell
     }
     

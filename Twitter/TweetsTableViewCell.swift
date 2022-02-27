@@ -18,6 +18,7 @@ class TweetsTableViewCell: UITableViewCell {
     @IBOutlet weak var retweetButton: UIButton!
     @IBOutlet weak var favoriteLabel: UILabel!
     @IBOutlet weak var retweetLabel: UILabel!
+    @IBOutlet weak var mediaImage: UIImageView!
     
     var favorited:Bool = false
     var retweeted:Bool = false
