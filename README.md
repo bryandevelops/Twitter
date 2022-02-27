@@ -24,6 +24,11 @@ The following **bonus** features are implemented:
 
 Here's a walkthrough of implemented user stories:
 
+- The user is able to compose a tweet from the client app. If they attempt to tweet when the input is empty or over Twitters 280-character limit, an Alert warning the user will dsplay.
+- The user is able to both favorite and retweet directly from their twitter feed.
+- The user is able to view media images from any tweets that have embedded images in them.
+- The user is able to click on a profile tab to view their Twitter account profile and some relevant data such as tweets, follwing, and follwer counts
+
 <img src='https://github.com/bryandevelops/Twitter/blob/master/demo2.gif' title='Video Walkthrough' width='400' alt='Video Walkthrough' />
 
 ---
