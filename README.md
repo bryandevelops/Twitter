@@ -1,6 +1,6 @@
 # Twitter
 
-This is a simple twitter client that allows users to log in and view their feed, compose tweets, favorite tweets, and retweet tweets.
+This is a twitter client that allows users to log in and view their feed, compose tweets, favorite tweets, and retweet tweets.
 
 ## Twitter - Part II
 
